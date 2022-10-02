@@ -12,9 +12,11 @@ class BinaryTree {
     BinaryTree(int ID, String name) { 
         root = new Node(ID, name); 
     }
-  
-    public BinaryTree() { root = null; }
+    public BinaryTree() {
+          root = null; 
+    }
  
+    //search in the tree
     public Node searchNode1(int ID) {
         return searchNode(ID, this.root);
     }
@@ -30,6 +32,7 @@ class BinaryTree {
         return temp;
     }
     
+    //add Node to the tree
     public void addN(int ID, String name) {
         this.root = addNode(ID, name, this.root);
     }
