@@ -8,7 +8,7 @@ class BinaryTree {
     Stack<Node> sta = new Stack<Node>(); 
     
     
-    // Constructors
+// Constructors
     BinaryTree(int ID, String name) { 
         root = new Node(ID, name); 
     }
@@ -16,7 +16,10 @@ class BinaryTree {
           root = null; 
     }
  
-    //search in the tree
+
+ //The methods
+      
+ //Search in the tree
     public Node searchNode1(int ID) {
         return searchNode(ID, this.root);
     }
@@ -32,12 +35,14 @@ class BinaryTree {
         return temp;
     }
     
-    //add Node to the tree
+      
+      
+//Add Node to the tree
     public void addN(int ID, String name) {
         this.root = addNode(ID, name, this.root);
     }
     
-    public Node addNode(int ID, String name, Node t) {
+    private Node addNode(int ID, String name, Node t) {
         if (t == null) {
            return new Node(ID, name);
         }
