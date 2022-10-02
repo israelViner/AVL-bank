@@ -1,13 +1,12 @@
 import java.util.*;   
 
 class BinaryTree {
+     
       
-    // Root of Binary Tree
+// Root of Binary Tree
     Node root;
-    //stack_array sta = new stack_array(20);
-    Stack<Node> sta = new Stack<Node>(); 
-    
-    
+   
+   
 // Constructors
     BinaryTree(int ID, String name) { 
         root = new Node(ID, name); 
@@ -17,9 +16,9 @@ class BinaryTree {
     }
  
 
- //The methods
+//The methods
       
- //Search in the tree
+//Search in the tree
     public Node searchNode1(int ID) {
         return searchNode(ID, this.root);
     }
@@ -35,7 +34,6 @@ class BinaryTree {
         return temp;
     }
     
-      
       
 //Add Node to the tree
     public void addN(int ID, String name) {
@@ -71,6 +69,9 @@ class BinaryTree {
         } 
     }
     
+    
+      
+//delete Node from the tree
     public void deleteNode1(int ID) {
         this.root = deleteNode(ID, this.root);
     }
@@ -105,10 +106,14 @@ class BinaryTree {
                   return checkRotates(t);
     }
     
+      
+ //Auxiliary functions
+      
+ //The rotations
     private Node rotationLeft(Node t) {
         Node result = t.getRightSon();
-        Node temp = t.getRightSon().getLeftSon();
-        t.getRightSon().setLeftSon(t);
+        Node temp = result.getLeftSon();
+        result.setLeftSon(t);
         t.setRightSon(temp);
         t.setHeight();
         result.setHeight();
@@ -117,25 +122,21 @@ class BinaryTree {
     
     private Node rotationRight(Node t) {
         Node result = t.getLeftSon();
-        Node temp = t.getLeftSon().getRightSon();
-        t.getLeftSon().setRightSon(t);
+        Node temp = result.getRightSon();
+        result.setRightSon(t);
         t.setLeftSon(temp);
         t.setHeight();
         result.setHeight();
         return result;
     }
     
+      
+//Checking if the node is balanced
     private boolean isBalance(Node t) {
            return (Math.abs(t.getHeight(t.getLeftSon()) - t.getHeight(t.getRightSon())) <= 1); 
     }
-    
-    private Node findSuccessor(Node t) {
-       Node result = t.getRightSon();
-       while (result.getLeftSon() != null)
-           result = result.getLeftSon();
-       return result;
-    }
-    
+      
+//Performing the rotations   
     private Node checkRotates(Node t) {
         if (t.getHeight(t.getRightSon()) > t.getHeight(t.getLeftSon())) 
                  if (t.getHeight(t.getRightSon().getRightSon()) > t.getHeight(t.getRightSon().getLeftSon())) 
@@ -154,28 +155,82 @@ class BinaryTree {
         }
     }
     
-    // public void postO() {
-       // postOrder(this.root);
-    // }
+//Finding the next Node
+    private Node findSuccessor(Node t) {
+       Node result = t.getRightSon();
+       while (result.getLeftSon() != null)
+           result = result.getLeftSon();
+       return result;
+    }
+      
+//Tree scanning algorithms
+      
+    
+//Recursive In-order   
+     public void inO() {
+        inOrder(this.root);
+    }
+    
+    public void inOrder(Node t) {
+        if (t == null)
+           return;
+        if (t.getRightSon() == null && t.getLeftSon() == null) {
+            System.out.print(t.getNumber() + ",");
+        }
+        else {
+            inOrder(t.getLeftSon());
+            System.out.print(t.getNumber() + ",");
+            inOrder(t.getRightSon());
+        }
+    }
+      
+      
+//Iterative In-order (based on stack)
+       //stack_array sta = new stack_array(20);
+       Stack<Node> sta = new Stack<Node>(); 
+       public void newInorder(Node t) {
+       this.sta.push(t);
+       Node a;
+       while (!this.sta.isEmpty()) {
+            a = this.sta.pop();
+            this.sta.push(a);
+            pushLeftSide(a);
+            a = this.sta.pop(); 
+            System.out.print(a.getNumber() + ",");
+            while (!this.sta.isEmpty() && a.getRightSon() == null) {
+               a = this.sta.pop();
+               System.out.print(a.getNumber() + ",");
+            }
+           if (a.getRightSon() != null)
+                this.sta.push(a.getRightSon());
+        }
+      }
+     
+      
+      
+//Recursive Post_order
+    public void postO() {
+       postOrder(this.root);
+    }
    
-     // private void postOrder(Node t) {
-        // intNode l = new intNode(Integer.MIN_VALUE, null);
-        // if (t == null)
-          // return;
-        // if (t.getRightSon() == null && t.getLeftSon() == null)
-            // System.out.print(t.getNumber() + ",");
-        // else {
-            // postOrder(t.getLeftSon());
-            // postOrder(t.getRightSon());
-            // System.out.print(t.getNumber() + ",");
-        // }
-    // }
+    private void postOrder(Node t) {
+        intNode l = new intNode(Integer.MIN_VALUE, null);
+        if (t == null)
+           return;
+        if (t.getRightSon() == null && t.getLeftSon() == null)
+           System.out.print(t.getNumber() + ",");
+        else {
+            postOrder(t.getLeftSon());
+            postOrder(t.getRightSon());
+            System.out.print(t.getNumber() + ",");
+       }
+    }
     
-    
+
+//Recursive Pre_order
     public void preO() {
        preOrder(this.root);
     }
-    
     
     public void preOrder(Node t) {
         if (t == null)
@@ -183,7 +238,6 @@ class BinaryTree {
         if (t.getRightSon() == null && t.getLeftSon() == null) {
             System.out.print(t.getKeyID() + ",");
         }
-        
         else {
             System.out.print(t.getKeyID() + ",");
             preOrder(t.getLeftSon());
@@ -191,23 +245,7 @@ class BinaryTree {
         }
     }
      
-    // public void inO() {
-       // inOrder(this.root);
-    // }
-    
-    // public void inOrder(Node t) {
-        // if (t == null)
-          // return;
-        // if (t.getRightSon() == null && t.getLeftSon() == null) {
-            // System.out.print(t.getNumber() + ",");
-        // }
-        // else {
-            // inOrder(t.getLeftSon());
-            // System.out.print(t.getNumber() + ",");
-            // inOrder(t.getRightSon());
-        // }
-    // }
-    
+//Iterative Level-order 
     public void levelO() {
        levelOrder(this.root);
     }
@@ -226,6 +264,9 @@ class BinaryTree {
         }
     }
     
+      
+ //Additional algorithms for Binary-search-tree
+      
     // private int counterLevel(Node t) {
         // int counter = 0;
         // if (t == null) 
@@ -315,23 +356,6 @@ class BinaryTree {
        // newInorder(this.root);
     // }
     
-    // public void newInorder(Node t) {
-        // this.sta.push(t);
-        // Node a;
-        // while (!this.sta.isEmpty()) {
-           // a = this.sta.pop();
-           // this.sta.push(a);
-           // pushLeftSide(a);
-           // a = this.sta.pop(); 
-           // System.out.print(a.getNumber() + ",");
-           // while (!this.sta.isEmpty() && a.getRightSon() == null) {
-              // a = this.sta.pop();
-              // System.out.print(a.getNumber() + ",");
-           // }
-           // if (a.getRightSon() != null)
-                // this.sta.push(a.getRightSon());
-        // }
-    // }
     
     // public void mirrorT() {
        // mirrorTree(this.root);
