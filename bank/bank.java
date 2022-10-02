@@ -4,6 +4,7 @@ public class bank {
          BinaryTree accounts = new BinaryTree(0, "empty");
          Scanner scanner = new Scanner(System.in);
          
+  //Bank operation
          public void play() {
              System.out.println("Welcome to the bank");
              System.out.println("1. Open account");
@@ -77,7 +78,7 @@ public class bank {
          }
          
          
-         
+  //The methods of the operation
          private void openAccount(int ID, String Name) {
               accounts.addN(ID, Name);
          }
