@@ -24,7 +24,7 @@ public class bank {
                      System.out.println("Would you be interested in depositing money into your account? if so, press 1");
                      int res = scanner.nextInt();
                      if (res == 1) {
-                        System.out.println("Enter the sum that you want to deposit");
+                        System.out.println("Enter the sum you want to deposit");
                         int sum = scanner.nextInt();
                         deposit(y, sum);
                         System.out.println("The money has been deposited successfully");
@@ -35,22 +35,22 @@ public class bank {
                  else {
                      int i = 0;
                      while (accounts.searchNode1(y) == null && i < 3) {
-                        System.out.println("Account not found(: please try again");
+                        System.out.println("Account not found:( please try again");
                         y = scanner.nextInt();
                         i++;
                      }
                      
                      if (accounts.searchNode1(y) == null) {
-                          System.out.println("Faild");
+                          System.out.println("Failed");
                           return;
                      }
                      
                      if (x == 2) {
-                         System.out.println("your balnace is: " + balanceInquiry(y));
+                         System.out.println("your balance is: " + balanceInquiry(y));
                      }
              
                      if (x == 3) {
-                             System.out.println("Enter the sum that you want to deposit");
+                             System.out.println("Enter the sum you want to deposit");
                              int sum = scanner.nextInt();
                              deposit(y, sum);
                              System.out.println("The money has been deposited successfully");
@@ -58,7 +58,7 @@ public class bank {
                      }
              
                      if (x == 4) {
-                             System.out.println("Enter the sum that you want to withdrawal");
+                             System.out.println("Enter the sum you want to withdraw");
                              int sum = scanner.nextInt();
                              withdrawal(y, sum);
                              System.out.println("Your balance now is: " + balanceInquiry(y));
@@ -70,7 +70,7 @@ public class bank {
                              return;
                      } 
                  }
-                 System.out.println("Would you like to perform another action on your account? If so, enter the appropriate number, else press 6");
+                 System.out.println("Would you like to perform another action in your account? If so, enter the appropriate number, else press 6");
                  x = scanner.nextInt();
              }
              System.out.println("Thank you for using our bank services, enjoy your day :)");
