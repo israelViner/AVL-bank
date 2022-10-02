@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=bank
+comment1.params=
+comment1.target=void\ play()
+comment2.params=ID\ Name
+comment2.target=void\ openAccount(int,\ java.lang.String)
+comment3.params=ID
+comment3.target=void\ deleteAccount(int)
+comment4.params=ID\ sum
+comment4.target=void\ deposit(int,\ int)
+comment5.params=ID\ sum
+comment5.target=void\ withdrawal(int,\ int)
+comment6.params=ID
+comment6.target=double\ balanceInquiry(int)
+numComments=7

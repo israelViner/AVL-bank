@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=queue_array
+comment1.params=size
+comment1.target=queue_array(int)
+comment2.params=x
+comment2.target=boolean\ enqueue(Node)
+comment3.params=
+comment3.target=Node\ denqueue()
+comment4.params=
+comment4.target=boolean\ isEmpty()
+comment5.params=
+comment5.target=int\ size()
+numComments=6

@@ -1,0 +1,27 @@
+#BlueJ class context
+comment0.target=intNode
+comment1.params=v\ n
+comment1.target=intNode(int,\ intNode)
+comment10.params=x
+comment10.target=void\ remove(int)
+comment11.params=
+comment11.target=void\ reverse()
+comment12.params=
+comment12.target=void\ printReverse()
+comment2.params=
+comment2.target=int\ getValue()
+comment3.params=v
+comment3.target=void\ setValue(int)
+comment4.params=
+comment4.target=intNode\ getNext()
+comment5.params=n
+comment5.target=void\ setNext(intNode)
+comment6.params=
+comment6.target=java.lang.String\ toString()
+comment7.params=x
+comment7.target=void\ addToStart(int)
+comment8.params=x
+comment8.target=void\ addToEnd(int)
+comment9.params=
+comment9.target=int\ Length()
+numComments=13
