@@ -1,7 +1,7 @@
 import java.util.*;  // Import the Scanner class
 
 public class bank {
-         BinaryTree accounts = new BinaryTree(0, "empty");
+         AVL_Tree accounts = new AVL_Tree(0, "empty");
          Scanner scanner = new Scanner(System.in);
          
   //Bank operation
