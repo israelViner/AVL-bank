@@ -1,6 +1,9 @@
-public class main {
+public class unitTest {
     public static void main(String[] args) {
 
+    bank bank = new bank();
+    bank.play();
+        
     //unit tests for the functions of the AVL-Tree
         
     //BinaryTree tree = new BinaryTree(30, "a");
