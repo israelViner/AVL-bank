@@ -175,20 +175,24 @@ class AVL_Tree {
         if (t == null)
            return;
         if (t.getRightSon() == null && t.getLeftSon() == null) {
-            System.out.print(t.getNumber() + ",");
+            System.out.print(t.getKeyID() + ",");
         }
         else {
             inOrder(t.getLeftSon());
-            System.out.print(t.getNumber() + ",");
+            System.out.print(t.getKeyID() + ",");
             inOrder(t.getRightSon());
         }
     }
       
       
 //Iterative In-order (based on stack)
-       //stack_array sta = new stack_array(20);
-       Stack<Node> sta = new Stack<Node>(); 
-       public void newInorder(Node t) {
+    Stack<Node> sta = new Stack<Node>();
+    //stack_array sta = new stack_array(20);
+     public void newInO() {
+       newInorder(this.root);
+    }
+    
+    private void newInorder(Node t) {
        this.sta.push(t);
        Node a;
        while (!this.sta.isEmpty()) {
@@ -196,17 +200,22 @@ class AVL_Tree {
             this.sta.push(a);
             pushLeftSide(a);
             a = this.sta.pop(); 
-            System.out.print(a.getNumber() + ",");
+            System.out.print(a.getKeyID() + ",");
             while (!this.sta.isEmpty() && a.getRightSon() == null) {
                a = this.sta.pop();
-               System.out.print(a.getNumber() + ",");
+               System.out.print(a.getKeyID() + ",");
             }
            if (a.getRightSon() != null)
                 this.sta.push(a.getRightSon());
         }
       }
-     
       
+      public void pushLeftSide(Node t) {
+        while (t.getLeftSon() != null) {
+            t = t.getLeftSon();   
+            this.sta.push(t);
+        }
+    }
       
 //Recursive Post_order
     public void postO() {
@@ -218,11 +227,11 @@ class AVL_Tree {
         if (t == null)
            return;
         if (t.getRightSon() == null && t.getLeftSon() == null)
-           System.out.print(t.getNumber() + ",");
+           System.out.print(t.getKeyID() + ",");
         else {
             postOrder(t.getLeftSon());
             postOrder(t.getRightSon());
-            System.out.print(t.getNumber() + ",");
+            System.out.print(t.getKeyID() + ",");
        }
     }
     
@@ -345,18 +354,7 @@ class AVL_Tree {
         // return result;
     // }
     
-    // public void pushLeftSide(Node t) {
-        // while (t.getLeftSon() != null) {
-            // t = t.getLeftSon();   
-            // this.sta.push(t);
-        // }
-    // }
-    
-    // public void newInO() {
-       // newInorder(this.root);
-    // }
-    
-    
+  
     // public void mirrorT() {
        // mirrorTree(this.root);
     // }
