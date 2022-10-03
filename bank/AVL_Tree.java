@@ -1,6 +1,6 @@
 import java.util.*;   
 
-class BinaryTree {
+class AVL_Tree {
      
       
 // Root of Binary Tree
@@ -8,10 +8,10 @@ class BinaryTree {
    
    
 // Constructors
-    BinaryTree(int ID, String name) { 
+    AVL_Tree(int ID, String name) { 
         root = new Node(ID, name); 
     }
-    public BinaryTree() {
+    public AVL_Tree() {
           root = null; 
     }
  
